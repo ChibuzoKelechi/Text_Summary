@@ -6,8 +6,9 @@ summarizer = pipeline(task="summarization")
 
 
 def summarize_text(text):
-    # summary = summary(text)
-    return 'summary'
+    summary = summarizer(text, max_length=84)
+    summary = summary[0]['summary_text']
+    return summary
 
 
 app = gradio.Interface(
