@@ -1,6 +1,4 @@
 import streamlit as st 
-import pdfkit
-
 from PyPDF2 import PdfReader
 from transformers import pipeline
 
@@ -36,9 +34,7 @@ if st.button('Summarize text'):
             </div>
                 ''', unsafe_allow_html=True)
     
-    
-    
-#####
+
 
 # PDF summary section
 
@@ -65,8 +61,7 @@ try:
 
         return page_text_stack
     
-
-
+    
 except: # Handle blank file error
     st.error('Please select a valid file')
 
@@ -88,13 +83,8 @@ if st.button('Summarize pdf content'):
     num_of_pages = check_page_count(uploaded_pdf)
     st.success(f'NUmber of pages is {num_of_pages}.')
     
-    pdf_output = list(pdf_input)
-    
-    # for stack in pdf_input:
-    #     summarize_text(stack)
-    #     pdf_output.append(stack)
-    
     with st.spinner('Summarizing extracted text...'):
+        pdf_output = list(pdf_input)
         pdf_summary = '\n\n'.join(pdf_output)
         st.success('Summary complete')
 
@@ -108,12 +98,7 @@ if st.button('Summarize pdf content'):
     
     st.success('PDF page summarized :)', icon="✅")
     
-    
-    # if st.button('Generate pdf download link'):
-    #     download_button = st.download_button(label='Download summary PDF', data=pdf_summary, file_name='summary.pdf', mime='application/pdf')   
-        
 
-  
 
 st.write('')
 st.write('')
@@ -128,7 +113,7 @@ st.markdown("""
     </div>
     
     <div style="text-align: center; padding: 1rem;">
-        Resources <a href="https://huggingface.co" target="_blank" style="color: white; font-weight: bold; text-decoration: none;">
+        Resources from <a href="https://huggingface.co" target="_blank" style="color: white; font-weight: bold; text-decoration: none;">
          Hugging face</a>
     </div>
 """,
