@@ -88,13 +88,13 @@ if st.button('Summarize pdf content'):
     num_of_pages = check_page_count(uploaded_pdf)
     st.success(f'NUmber of pages is {num_of_pages}.')
     
-    with st.spinner('Summarizing extracted text...'):
-        pdf_output = []
+    pdf_output = []
     
-        for stack in pdf_input:
-            summarize_text(stack)
-            pdf_output.append(stack)
-           
+    for stack in pdf_input:
+        summarize_text(stack)
+        pdf_output.append(stack)
+    
+    with st.spinner('Summarizing extracted text...'):
         pdf_summary = '\n\n'.join(pdf_output)
         st.success('Summary complete')
 
