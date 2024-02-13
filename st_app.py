@@ -88,8 +88,8 @@ if st.button('Summarize pdf content'):
         pdf_summary = '\n\n'.join(pdf_output)
         st.success('Summary complete')
 
-        
-    st.markdown(f'''
+    with st.echo():    
+        st.markdown(f'''
             <div style="background-color: black; color: white; font-weight: bold; padding: 1rem; border-radius: 10px;">
              <h4>Summary </h4>
                 <p>{pdf_summary}</p>
