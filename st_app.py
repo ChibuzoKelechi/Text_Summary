@@ -3,7 +3,9 @@ from PyPDF2 import PdfReader
 from transformers import pipeline
 
 @st.cache_resource
-summarizer = pipeline(task="summarization")
+def get_model():
+    summarizer = pipeline(task="summarization")
+    return summarizer
 
 # Basic text summary
 st.set_page_config(
@@ -15,7 +17,8 @@ st.title('Text Summarization')
 # Text summary function
 @st.cache_resource
 def summarize_text(text):
-    summary = summarizer(text)
+    model = get_model()
+    summary = model(text)
     summary = summary[0]['summary_text']
     return summary
 
