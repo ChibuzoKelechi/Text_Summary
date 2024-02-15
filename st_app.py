@@ -2,6 +2,7 @@ import streamlit as st
 from PyPDF2 import PdfReader
 from transformers import pipeline
 
+@st.cache_resource
 summarizer = pipeline(task="summarization")
 
 # Basic text summary
@@ -12,7 +13,7 @@ st.set_page_config(
 st.title('Text Summarization')
 
 # Text summary function
-
+@st.cache_resource
 def summarize_text(text):
     summary = summarizer(text)
     summary = summary[0]['summary_text']
